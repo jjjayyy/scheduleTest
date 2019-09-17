@@ -9,6 +9,14 @@
         FROM BOARD
     </select>
 
+    <select id="scheduleList" resultType="com.test.vo.ScheduleVO">
+        SELECT
+            TIME_TERM AS timeTerm
+            ,SQL_ROW AS sqlRow
+            ,MESSAGE AS message
+        FROM SCHEDULE
+    </select>
+
 
 </mapper>
 
