@@ -16,9 +16,6 @@ public class TestList {
     @Autowired
     private SqlSession sqlSession;
 
-    @Autowired
-    private SchedulerService schedulerService;
-
     @RequestMapping("/test")
     public void getList() throws Exception {
 
@@ -32,11 +29,12 @@ public class TestList {
 
     @PostConstruct
     public void start() throws InterruptedException  {
+        SchedulerService schedulerService = new SchedulerService();
         List<ScheduleVO> scheduleList = sqlSession.selectList("com.test.mapper.scheduleList");
 
         for(ScheduleVO scheduleVO : scheduleList) {
             schedulerService.startScheduler(scheduleVO);
         }
-        //Thread.sleep(10000);
+
     }
 }
