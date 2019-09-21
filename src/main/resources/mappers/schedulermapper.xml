@@ -14,6 +14,7 @@
             TIME_TERM AS timeTerm
             ,SQL_ROW AS sqlRow
             ,MESSAGE AS message
+            ,SEQ AS seq
         FROM SCHEDULE
     </select>
 

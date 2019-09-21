@@ -10,5 +10,6 @@ public class ScheduleVO {
     private String timeTerm;
     private String sqlRow;
     private String message;
+    private String seq;
 
 }

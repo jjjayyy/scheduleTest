@@ -9,7 +9,6 @@ public class ThreadPoolTaskSchedulerConfig {
 
     @Bean
     public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
-
         ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
         taskScheduler.setPoolSize(5);
         taskScheduler.setThreadNamePrefix("timeSchedule");
