@@ -1,12 +1,14 @@
 package com.test.controller;
 
-import com.test.service.RunnableTask;
+import com.test.service.SchedulerService;
+import com.test.vo.ScheduleVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 public class TestList {
@@ -15,20 +17,20 @@ public class TestList {
     private SqlSession sqlSession;
 
     @Autowired
-    private ThreadPoolTaskScheduler taskScheduler;
+    private ThreadPoolTaskScheduler threadPoolTaskScheduler;
+
+    @Autowired
+    private SchedulerService schedulerService;
 
     @PostConstruct
-    public void start() throws InterruptedException  {
-//        SchedulerService schedulerService = new SchedulerService();
-//        List<ScheduleVO> scheduleList = sqlSession.selectList("com.test.mapper.scheduleList");
-//
-//        schedulerService.startScheduler(scheduleList);
+    public void start() throws Exception {
+        List<ScheduleVO> scheduleList = sqlSession.selectList("com.test.mapper.scheduleList");
 
-        taskScheduler.scheduleWithFixedDelay(
-                new RunnableTask("Specific time, 3 Seconds from now"), 3000
-        );
+        schedulerService.startScheduler(scheduleList);
 
     }
+
+
 
 
 }
