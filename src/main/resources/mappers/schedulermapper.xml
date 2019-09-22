@@ -18,6 +18,12 @@
         FROM SCHEDULE
     </select>
 
+    <select id="boardCnt" resultType="int">
+        SELECT
+            COUNT(1) AS COUNT
+        FROM BOARD
+    </select>
+
 
 </mapper>
 

@@ -39,7 +39,8 @@ public class SchedulerService {
                 () -> {
                     List<ScheduleVO> scheduleList = sqlSession.selectList("com.test.mapper.scheduleList");
 
-                    System.out.println(new Date()+" Runnable Task with "+ schedule.getMessage()
+
+                    System.out.println(new Date()+" Runnable Task with "+ schedule.getMessage() + " Board Count ::" + boardCnt()
                             +" on thread "+Thread.currentThread().getName());
                 }, periodicTrigger(Integer.parseInt(schedule.getTimeTerm()))
 
@@ -55,6 +56,9 @@ public class SchedulerService {
         return new PeriodicTrigger(timeTerm, TimeUnit.SECONDS);
     }
 
+    private int boardCnt() {
+        return sqlSession.selectOne("com.test.mapper.boardCnt");
+    }
 
 
 }

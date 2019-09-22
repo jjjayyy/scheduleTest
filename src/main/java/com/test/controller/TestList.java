@@ -28,6 +28,10 @@ public class TestList {
 
         schedulerService.startScheduler(scheduleList);
 
+        Thread.sleep(20000);
+        ScheduleVO scheduleVO = new ScheduleVO();
+        scheduleVO.setSeq("2");
+        schedulerService.stopScheduler(scheduleVO);
     }
 
 
